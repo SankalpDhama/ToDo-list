@@ -20,7 +20,7 @@ class _HomeScreenState extends State<HomeScreen> {
       backgroundColor: AppStyle.mainColor,
       appBar: AppBar(
         elevation: 0.0,
-        title: Text("FireNotes"),
+        title: Text("SanNotes"),
         centerTitle: true,
         backgroundColor: AppStyle.mainColor,
       ),

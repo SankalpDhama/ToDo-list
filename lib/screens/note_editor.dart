@@ -67,15 +67,19 @@ class _NoteEditorScreenState extends State<NoteEditorScreen> {
       floatingActionButton: FloatingActionButton(
         backgroundColor: AppStyle.accentColor,
         onPressed: () async {
-          FirebaseFirestore.instance.collection("Notes").add({
-            "note_title":_titleController.text,
-            "creation_date":date,
-            "note_content":_mainController.text,
-            "color_id":color_id;
-          }).then((value) {
+          FirebaseFirestore.instance.collection("Notes").add(
+            {
+              "note_title": _titleController.text,
+              "creation_date": date,
+              "note_content": _mainController.text,
+              "color_id": color_id,
+            },
+          ).then((value) {
             print(value.id);
             Navigator.pop(context);
-          }).catchError((error)=>print("Failed to add new Note due to $error"),);
+          }).catchError(
+            (error) => print("Failed to add new Note due to $error"),
+          );
         },
         child: Icon(Icons.save),
       ),
