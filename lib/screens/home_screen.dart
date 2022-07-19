@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:note_making/screens/note_editor.dart';
 import 'package:note_making/screens/note_reader.dart';
-import 'package:note_making/style/app_style.dart';
 import '../widgets/note_card.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -17,12 +16,18 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: AppStyle.mainColor,
+      backgroundColor: Colors.blueGrey[900],
       appBar: AppBar(
         elevation: 0.0,
-        title: Text("SanNotes"),
+        title: Text(
+          "TODO LIST",
+          style: TextStyle(
+              color: Colors.blueGrey[900],
+              fontSize: 25,
+              fontWeight: FontWeight.bold),
+        ),
         centerTitle: true,
-        backgroundColor: AppStyle.mainColor,
+        backgroundColor: Colors.white,
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
@@ -30,17 +35,6 @@ class _HomeScreenState extends State<HomeScreen> {
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text(
-              "Your recent Notes",
-              style: GoogleFonts.roboto(
-                color: Colors.white,
-                fontWeight: FontWeight.bold,
-                fontSize: 22,
-              ),
-            ),
-            const SizedBox(
-              height: 20.0,
-            ),
             Expanded(
               child: StreamBuilder<QuerySnapshot>(
                 stream:
@@ -68,7 +62,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     );
                   }
                   return Text(
-                    "there's no Notes,",
+                    "there's no List,",
                     style: GoogleFonts.nunito(color: Colors.white),
                   );
                 },
@@ -82,8 +76,17 @@ class _HomeScreenState extends State<HomeScreen> {
           Navigator.push(context,
               MaterialPageRoute(builder: (context) => NoteEditorScreen()));
         },
-        label: Text("Add Note"),
-        icon: Icon(Icons.add),
+        label: Text(
+          "ADD TODO",
+          style: TextStyle(
+            color: Colors.blueGrey[900],
+          ),
+        ),
+        icon: Icon(
+          Icons.add,
+          color: Colors.blueGrey[900],
+        ),
+        backgroundColor: Colors.white,
       ),
     );
   }
